@@ -5,6 +5,8 @@ Show a letter, and Qol tells you which finger to fix: *"Bend your ring finger mo
 *"Move your thumb to the left"*. It runs entirely in the browser: no account, no server,
 and the video never leaves the device.
 
+**Try it: https://044shad1k.github.io/qol/** (Chrome, Edge or Safari, allow the camera)
+
 ![Practice mode](docs/practice.png)
 
 ## Why
