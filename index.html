@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qol — Fingerspelling Coach</title>
+  <meta name="description" content="Learn sign language fingerspelling with your webcam. Finger-by-finger feedback, runs fully in your browser.">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <img src="assets/icon.svg" alt="" width="34" height="34">
+      <div>
+        <strong>Qol</strong>
+        <span data-i18n="tagline"></span>
+      </div>
+    </div>
+    <div class="controls">
+      <label><span data-i18n="alphabet"></span>
+        <select id="alphabet"></select>
+      </label>
+      <select id="language" aria-label="Language">
+        <option value="en">EN</option>
+        <option value="ru">RU</option>
+      </select>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="stage card">
+      <div class="camera" id="camera">
+        <video id="video" playsinline muted></video>
+        <canvas id="overlay"></canvas>
+        <div class="chip" id="status"></div>
+        <div class="gate" id="gate">
+          <button class="primary big" id="start" data-i18n="start"></button>
+          <p class="muted" data-i18n="privacy"></p>
+        </div>
+      </div>
+      <div class="hold" aria-hidden="true"><div id="holdBar"></div></div>
+    </section>
+
+    <section class="panel card">
+      <nav class="tabs" role="tablist">
+        <button role="tab" data-mode="practice" data-i18n="tabPractice"></button>
+        <button role="tab" data-mode="spell" data-i18n="tabSpell"></button>
+        <button role="tab" data-mode="live" data-i18n="tabLive"></button>
+        <button role="tab" data-mode="teach" data-i18n="tabTeach"></button>
+      </nav>
+
+      <div class="empty" id="empty" hidden>
+        <p data-i18n="needLetters"></p>
+        <button class="primary" id="goRecord" data-i18n="goRecord"></button>
+      </div>
+
+      <div class="mode" data-view="practice" hidden>
+        <p class="eyebrow" data-i18n="showLetter"></p>
+        <div class="target" id="practiceTarget"></div>
+        <div class="meter"><div id="practiceMeter"></div></div>
+        <p class="advice" id="practiceAdvice"></p>
+        <div class="row">
+          <figure class="reference">
+            <canvas id="practiceReference" width="180" height="180"></canvas>
+            <figcaption data-i18n="reference"></figcaption>
+          </figure>
+          <dl class="stats">
+            <div><dt data-i18n="streak"></dt><dd id="practiceStreak">0</dd></div>
+            <div><dt data-i18n="accuracy"></dt><dd id="practiceAccuracy">—</dd></div>
+          </dl>
+        </div>
+        <button class="ghost" id="practiceSkip" data-i18n="skip"></button>
+      </div>
+
+      <div class="mode" data-view="spell" hidden>
+        <p class="eyebrow" data-i18n="spellTitle"></p>
+        <div class="word" id="spellWord"></div>
+        <div class="meter"><div id="spellMeter"></div></div>
+        <p class="advice" id="spellAdvice"></p>
+        <div class="words" id="spellWords"></div>
+        <form class="row" id="spellForm">
+          <input id="spellInput" autocomplete="off" maxlength="16">
+          <button class="primary" data-i18n="go"></button>
+        </form>
+        <button class="ghost" id="spellNext" data-i18n="newWord"></button>
+      </div>
+
+      <div class="mode" data-view="live" hidden>
+        <p class="eyebrow" data-i18n="liveTitle"></p>
+        <div class="row live">
+          <div class="target small" id="liveLetter">?</div>
+          <output class="transcript" id="liveText"></output>
+        </div>
+        <p class="muted" data-i18n="liveHint"></p>
+        <div class="row">
+          <button class="primary" id="liveSpeak" data-i18n="speak"></button>
+          <button class="ghost" id="liveBack" data-i18n="backspace"></button>
+          <button class="ghost" id="liveClear" data-i18n="clear"></button>
+        </div>
+      </div>
+
+      <div class="mode" data-view="teach" hidden>
+        <p class="eyebrow" data-i18n="teachTitle"></p>
+        <p class="muted" data-i18n="teachHint"></p>
+        <p class="muted" id="teachSummary"></p>
+        <div class="letters" id="teachLetters"></div>
+        <div class="row">
+          <button class="primary" id="teachRecord" data-i18n="record"></button>
+          <button class="ghost" id="teachRemove" data-i18n="remove"></button>
+        </div>
+        <p class="advice" id="teachStatus"></p>
+        <div class="row">
+          <button class="ghost" id="teachExport" data-i18n="exportPack"></button>
+          <label class="ghost button"><span data-i18n="importPack"></span><input type="file" id="teachImport" accept="application/json,.json" hidden></label>
+          <button class="ghost danger" id="teachClear" data-i18n="clearAll"></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
