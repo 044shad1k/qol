@@ -43,6 +43,32 @@ and the video never leaves the device.
 The interface is in English and Russian. Alphabets included: Kazakh (42 letters), Russian (33),
 ASL (26).
 
+## Studio: build and play with your hand
+
+**https://044shad1k.github.io/qol/studio.html**
+
+The same hand tracking turns into a touch-free design tool. Your index finger is the cursor.
+
+| Gesture | Action |
+|---|---|
+| ☝️ Point | Move the cursor. Hold it over a toolbar button for 0.7 s to press it. |
+| 🤏 Pinch (thumb + index) | Draw a line, place a shape, or grab an existing shape. |
+| 🔄 Twist your hand while holding | Rotate the shape. |
+| ↕️ Move your hand closer or further while holding | Make the shape bigger or smaller. |
+| ✊ Fist over a shape or line | Delete it (hold 0.6 s). |
+
+Tools: freehand drawing, circle, square, triangle, star, 7 colours, undo, clear, save as PNG,
+show or hide the camera. **Bubble game:** pop as many bubbles as you can with your fingertip in
+45 seconds; your best score is saved.
+
+Gestures are computed from the landmarks in `js/gestures.js`: pinch is the thumb–index distance
+relative to palm length (with hysteresis so it does not flicker), rotation is the angle of the
+knuckle line, and size is the palm's apparent length, which grows as the hand approaches the
+camera. The cursor is smoothed more when the hand is still and less when it moves fast. A mouse
+also works (drag to draw or move, scroll to resize).
+
+![Studio](docs/studio.png)
+
 ## How it works
 
 ```
@@ -77,8 +103,8 @@ Any static file server works; there is no build step.
 ## Tests
 
 `npm test` runs the core tests on synthetic hands: invariance to position, size and handedness,
-recognition of noisy new examples, rejection of unknown shapes, finger-level advice, and pack
-import/export. The full interface was also checked in Chrome with a simulated camera, using
+recognition of noisy new examples, rejection of unknown shapes, finger-level advice, pack
+import/export, and the Studio gestures (pinch, fist, hand roll, size, mirrored cursor). The full interface was also checked in Chrome with a simulated camera, using
 photos of real hands.
 
 ## Limitations and next steps

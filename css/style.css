@@ -68,6 +68,7 @@ button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px s
 .brand strong { display: block; font-size: 22px; letter-spacing: -0.02em; }
 .brand span { color: var(--muted); font-size: 14px; }
 .controls { display: flex; gap: 10px; align-items: center; }
+.studio-link { text-decoration: none; font-weight: 600; color: var(--brand); border-color: var(--brand); }
 .controls label { display: flex; gap: 8px; align-items: center; color: var(--muted); font-size: 14px; }
 
 .layout {

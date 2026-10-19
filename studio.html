@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qol Studio — Build With Your Hand</title>
+  <meta name="description" content="Draw, build and play with your bare hand in front of the webcam. Runs fully in your browser.">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/studio.css">
+</head>
+<body>
+  <div class="stage" id="stage">
+    <video id="video" playsinline muted></video>
+    <canvas id="scene"></canvas>
+    <canvas id="hud"></canvas>
+
+    <header class="bar">
+      <a class="home" href="./" title="Qol"><img src="assets/icon.svg" alt="Qol" width="36" height="36"></a>
+      <div class="group" id="tools"></div>
+      <div class="group" id="colors"></div>
+      <div class="group" id="actions"></div>
+    </header>
+
+    <div class="score" id="score" hidden></div>
+    <p class="hint" id="hint"></p>
+
+    <div class="gate" id="gate">
+      <h1>Qol Studio</h1>
+      <p data-i18n="studioIntro"></p>
+      <ul class="guide">
+        <li><b>☝️</b><span data-i18n="guidePoint"></span></li>
+        <li><b>🤏</b><span data-i18n="guidePinch"></span></li>
+        <li><b>🔄</b><span data-i18n="guideTwist"></span></li>
+        <li><b>✊</b><span data-i18n="guideFist"></span></li>
+      </ul>
+      <button id="start" data-i18n="start"></button>
+      <p class="small" id="gateStatus" data-i18n="privacy"></p>
+    </div>
+  </div>
+  <script type="module" src="js/studio.js"></script>
+</body>
+</html>
